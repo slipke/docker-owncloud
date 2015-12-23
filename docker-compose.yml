@@ -2,7 +2,6 @@ ownclouddata:
   image: ubuntu
   volumes:
     - /var/www/html
-    - /var/data
 
 dbdata:
   image: ubuntu
@@ -22,7 +21,7 @@ db:
     MYSQL_PASSWORD: owncloud
 
 owncloud:
-  build: owncloud/ 
+  image: owncloud:8-fpm
   volumes_from:
     - ownclouddata
   expose:
