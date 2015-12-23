@@ -1,0 +1,40 @@
+owncloud_data:
+  image: ubuntu
+  volumes:
+    - /var/www/html
+    - /var/data
+
+db_data:
+  image: ubuntu
+  volumes:
+    - /var/lib/mysql
+
+db:
+  image: mysql:5.7
+  volumes_from:
+    - db_data
+  expose:
+    - 3306
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: owncloud
+    MYSQL_USER: owncloud
+    MYSQL_PASSWORD: owncloud
+
+owncloud:
+  build: owncloud/ 
+  volumes_from:
+    - owncloud_data
+  expose:
+    - 9000
+  links:
+    - db
+
+nginx:
+  build: nginx/
+  volumes_from:
+    - owncloud_data
+  ports:
+    - 443:443
+  links:
+    - owncloud:php
