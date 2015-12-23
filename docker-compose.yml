@@ -1,10 +1,10 @@
-owncloud_data:
+ownclouddata:
   image: ubuntu
   volumes:
     - /var/www/html
     - /var/data
 
-db_data:
+dbdata:
   image: ubuntu
   volumes:
     - /var/lib/mysql
@@ -12,7 +12,7 @@ db_data:
 db:
   image: mysql:5.7
   volumes_from:
-    - db_data
+    - dbdata
   expose:
     - 3306
   environment:
@@ -24,7 +24,7 @@ db:
 owncloud:
   build: owncloud/ 
   volumes_from:
-    - owncloud_data
+    - ownclouddata
   expose:
     - 9000
   links:
@@ -33,7 +33,7 @@ owncloud:
 nginx:
   build: nginx/
   volumes_from:
-    - owncloud_data
+    - ownclouddata
   ports:
     - 443:443
   links:
