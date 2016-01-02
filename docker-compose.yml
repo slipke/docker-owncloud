@@ -21,7 +21,7 @@ db:
     MYSQL_PASSWORD: owncloud
 
 owncloud:
-  image: owncloud:8-fpm
+  build: owncloud/ 
   volumes_from:
     - ownclouddata
   expose:
