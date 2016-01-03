@@ -1,1 +1,4 @@
 /nginx/certs/
+/.built
+/production.yml
+/env_make

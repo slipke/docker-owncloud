@@ -1,0 +1,10 @@
+db:
+  environment:
+    MYSQL_ROOT_PASSWORD: 'S3cr3t'
+    MYSQL_DATABASE: owncloud
+    MYSQL_USER: owncloud
+    MYSQL_PASSWORD: '0wnCl0Ud'
+
+owncloud:
+  external_links:
+    - dockeropenldap_ldap_1:ldap.ubuntu.local
