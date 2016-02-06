@@ -2,3 +2,6 @@
 /.built
 /production.yml
 /env_make
+
+# IDE
+.idea/*
